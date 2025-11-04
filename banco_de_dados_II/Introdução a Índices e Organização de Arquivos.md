@@ -365,8 +365,6 @@ sequenceDiagram
     I->>Q: Retorna: 150
     
     Note over D: ✅ NÃO FOI ACESSADO!
-    
-    style I fill:#4caf50
 ```
 
 **Vantagem Principal:**
