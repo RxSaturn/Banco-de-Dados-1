@@ -1,28 +1,15 @@
-## Page 1
-
 # Banco de dados II
 
 ## 7 – Visão geral da avaliação de consultas
 
-Marcos Roberto Ribeiro
+**Autor:** Marcos Roberto Ribeiro
 
-Departamento de Engenharia e Computação (DEC)
-Curso de Engenharia de Computação
-2024
-
-&lt;img&gt;Logo with white squares and a circle on a green background&lt;/img&gt;
-INSTITUTO FEDERAL
-Minas Gerais
----
-Bambuí
+**Instituição:** Instituto Federal Minas Gerais (IFMG) - Campus Bambuí  
+**Departamento:** Departamento de Engenharia e Computação (DEC)  
+**Curso:** Engenharia de Computação  
+**Ano:** 2024
 
 ---
-
-
-## Page 2
-
-IFMG
-&lt;page_number&gt;2&lt;/page_number&gt;
 
 # Introdução
 
@@ -33,12 +20,6 @@ IFMG
 
 ---
 
-
-## Page 3
-
-&lt;page_number&gt;3&lt;/page_number&gt;
-
-&lt;img&gt;IFMG&lt;/img&gt;
 
 # Tabelas consideradas nos exemplos
 
@@ -61,12 +42,6 @@ dia: date, nome_responsavel: string)
 ---
 
 
-## Page 4
-
-&lt;page_number&gt;4&lt;/page_number&gt;
-
-IFMG
-
 # Catálogo do sistema
 
 *   Tabelas especiais que armazenam metadados sobre os bancos de dados
@@ -77,11 +52,6 @@ IFMG
 
 ---
 
-
-## Page 5
-
-IFMG
-&lt;page_number&gt;5&lt;/page_number&gt;
 
 # Estatísticas do catálogo do sistema
 
@@ -96,11 +66,6 @@ IFMG
 ---
 
 
-## Page 6
-
-IFMG
-&lt;page_number&gt;6&lt;/page_number&gt;
-
 # Introdução à avaliação de operadores
 
 *   Cada operador pode possuir diversos algoritmos para avaliação
@@ -114,11 +79,6 @@ IFMG
 ---
 
 
-## Page 7
-
-IFMG
-&lt;page_number&gt;7&lt;/page_number&gt;
-
 # Técnicas comumente usadas no processamento de operadores
 
 **Indexação:** Uso de índice para obter apenas às tuplas que atendem à uma determinada condição
@@ -129,11 +89,6 @@ IFMG
 
 ---
 
-
-## Page 8
-
-IFMG
-&lt;page_number&gt;8&lt;/page_number&gt;
 
 # Caminhos de acesso
 
@@ -146,11 +101,6 @@ IFMG
 ---
 
 
-## Page 9
-
-IFMG
-&lt;page_number&gt;9&lt;/page_number&gt;
-
 # Algoritmos para operações relacionais – Seleção
 
 - Pesquisa por um registro que atenda a certas condições
@@ -161,11 +111,6 @@ IFMG
 ---
 
 
-## Page 10
-
-IFMG
-&lt;page_number&gt;10&lt;/page_number&gt;
-
 # Algoritmos para operações relacionais – Projeção
 
 *   A maior dificuldade está na eliminação de duplicatas (DISTINCT)
@@ -175,12 +120,6 @@ IFMG
 
 ---
 
-
-## Page 11
-
-&lt;page_number&gt;11&lt;/page_number&gt;
-
-IFMG
 
 # Algoritmos para operações relacionais - junção I
 
@@ -199,11 +138,6 @@ IFMG
 ---
 
 
-## Page 12
-
-IFMG
-&lt;page_number&gt;12&lt;/page_number&gt;
-
 # Algoritmos para operações relacionais - junção II
 
 ## Junção sort-merge
@@ -220,25 +154,20 @@ IFMG
 ---
 
 
-## Page 13
-
-IFMG
-&lt;page_number&gt;13&lt;/page_number&gt;
-
 # Introdução à otimização de consultas
 
 *   Uma das tarefas mais importantes do SGBD
 *   Uma consulta pode ser avaliada de várias formas e custo destas avaliações pode ser muito diferente
 *   É muito difícil encontrar o plano ideal, mas podemos encontrar um bom plano
 
-<mermaid>
+```mermaid
 graph TD
     A[Consulta] --> B[Analisador de Consultas]
     B -->|Consulta Analisada| C[Otimizador de Consultas]
     C -->|Gerador de Planos| D[Catálogo do Sistema]
     C -->|Estimador de Custo| D
     C -->|Plano Escolhido| E[Avaliador de Planos de Consulta]
-</mermaid>
+```
 
 ## Tarefas do Otimizador
 
@@ -248,10 +177,6 @@ graph TD
 
 ---
 
-
-## Page 14
-
-IFMG &lt;page_number&gt;14&lt;/page_number&gt;
 
 # Planos de avaliação de consultas
 
@@ -273,43 +198,34 @@ AND m.avaliacao > 5;
 ```mermaid
 graph TD
     A[reservas] --> B(marinheiros)
-    subgraph " "
-        C[πnome_marinheiro]
-        D[σid_barco=100 ∧ avaliacao > 5]
-        E[×id_marinheiro=id_marinheiro]
+    subgraph "Operadores"
+        C["πnome_marinheiro"]
+        D["σid_barco=100 AND avaliacao > 5"]
+        E["⋈ id_marinheiro=id_marinheiro"]
     end
     B --> C
     C --> D
     D --> E
+```
 
 ---
 
-
-## Page 15
-
-IFMG
-&lt;page_number&gt;15&lt;/page_number&gt;
 
 # Plano de execução completo
 
-<mermaid>
+```mermaid
 graph TD
-    A[reservas] --> B(marinheiros)
-    C[&times; id_marinheiro = id_marinheiro] --> D[σ id_barco=100 & avaliacao > 5]
-    E[π nome_marinheiro] --> F((durante a execução))
-    G[σ id_barco=100 & avaliacao > 5] --> H((durante a execução))
-    I[&times; id_marinheiro = id_marinheiro] --> J((laços aninhados simples))
-    K[reservas] --> L((varredura de arquivo))
-    M[marinheiros] --> N((varredura de arquivo))
-</mermaid>
+    A[reservas] --> E
+    B[marinheiros] --> E
+    E["⋈ id_marinheiro = id_marinheiro"] --> D
+    D["σ id_barco=100 AND avaliacao > 5"] --> C
+    C["π nome_marinheiro"] --> F[Resultado]
+```
+
+> **Representação Visual:** Árvore de avaliação de consulta onde as tabelas `reservas` e `marinheiros` são unidas por junção (⋈), seguida de seleção (σ) e projeção (π) do nome do marinheiro.
 
 ---
 
-
-## Page 16
-
-IFMG
-&lt;page_number&gt;16&lt;/page_number&gt;
 
 # Avaliação pipeline
 
@@ -321,11 +237,6 @@ IFMG
 
 ---
 
-
-## Page 17
-
-IFMG
-&lt;page_number&gt;17&lt;/page_number&gt;
 
 # A interface iteradora
 
@@ -340,20 +251,17 @@ IFMG
 ---
 
 
-## Page 18
-
-IFMG
-&lt;page_number&gt;18&lt;/page_number&gt;
-
 # Planos alternativos - exemplo de motivação
 
 ```mermaid
 graph TD
-    A[π nome_marinheiro (durante a execução)] --> B[σ id_barco=100 ∧ avaliacao > 5 (durante a execução)]
-    B --> C[⋈ id_marinheiro = id_marinheiro (laços aninhados simples)]
-    C --> D[reservas (varredura de arquivo)]
-    C --> E[marinheiros (varredura de arquivo)]
+    A["π nome_marinheiro"] --> B["σ id_barco=100 AND avaliacao > 5"]
+    B --> C["⋈ id_marinheiro = id_marinheiro"]
+    C --> D[reservas]
+    C --> E[marinheiros]
 ```
+
+> **Nota:** Diagrama de plano com avaliação durante execução usando laços aninhados simples e varredura de arquivo.
 
 *   Varredura e junção com loops aninhados
 *   Para cada página de reservas, leia todas as páginas de marinheiros fazendo a junção
@@ -362,26 +270,26 @@ graph TD
 ---
 
 
-## Page 19
-
-IFMG
-&lt;page_number&gt;19&lt;/page_number&gt;
-
 # Exemplo de motivação (empurrando seleções)
 
+```mermaid
+graph TD
+    subgraph "Plano Otimizado"
+        P["π nome_marinheiro"]
+        J["⋈ id_marinheiro = id_marinheiro"]
+        S1["σ id_barco = 100"]
+        S2["σ avaliacao > 5"]
+        R[reservas]
+        M[marinheiros]
+    end
+    P --> J
+    J --> S1
+    J --> S2
+    S1 --> R
+    S2 --> M
 ```
-    π_{nome_marinheiro}
-          |
-        η_{id_marinheiro = id_marinheiro} (durante a execução)
-          |
-     σ_{id_barco = 100}       σ_{avaliacao > 5} (junção sort-merge)
-          |         /
-    vari()       vari()
-    |       ____________
-reservas       marinheiros (varredura; materializa)      (varredura; materializa)
-         |
-         (varredura de arquivo) (varredura de arquivo)
-```
+
+> **Representação Visual:** Plano de execução com seleções empurradas antes da junção (sort-merge), onde T1 representa reservas filtradas e T2 representa marinheiros filtrados.
 
 *   Varredura/seleção de reservas: 1.000
 *   Gravação de T1 (supondo distribuição uniforme de reservas): 1.000 reservas / 100 barcos = 10
@@ -394,11 +302,6 @@ reservas       marinheiros (varredura; materializa)      (varredura; materializa
 
 ---
 
-
-## Page 20
-
-IFMG
-&lt;page_number&gt;20&lt;/page_number&gt;
 
 # Tarefas de um otimizador típico
 
@@ -415,37 +318,51 @@ IFMG
 ---
 
 
-## Page 21
-
-&lt;page_number&gt;21&lt;/page_number&gt;
-
-IFMG
-
 # Planos de profundidade à esquerda
 
-## Árvore 1
-&lt;img&gt;A tree diagram labeled "Árvore 1" with nodes A, B, C, D.&lt;/img&gt;
-Tabela Externa
+## Árvore 1 (Tabela Externa)
 
-## Árvore 2
-&lt;img&gt;A tree diagram labeled "Árvore 2" with nodes A, B, C, D.&lt;/img&gt;
-Tabela Interna
+```mermaid
+graph TD
+    J1["⋈"] --> J2["⋈"]
+    J1 --> D[D]
+    J2 --> J3["⋈"]
+    J2 --> C[C]
+    J3 --> A[A]
+    J3 --> B[B]
+```
 
-## Árvore 3
-&lt;img&gt;A tree diagram labeled "Árvore 3" with nodes A, B, C, D.&lt;/img&gt;
+## Árvore 2 (Tabela Interna)
 
-Árvores Lineares: Pelo menos um filho de junção é tabela
-Árvore de Profundidade à Esquerda: O filho direito da junção sempre é uma tabela
+```mermaid
+graph TD
+    J1["⋈"] --> A[A]
+    J1 --> J2["⋈"]
+    J2 --> B[B]
+    J2 --> J3["⋈"]
+    J3 --> C[C]
+    J3 --> D[D]
+```
+
+## Árvore 3 (Árvore Bushy)
+
+```mermaid
+graph TD
+    J1["⋈"] --> J2["⋈"]
+    J1 --> J3["⋈"]
+    J2 --> A[A]
+    J2 --> B[B]
+    J3 --> C[C]
+    J3 --> D[D]
+```
+
+**Árvores Lineares:** Pelo menos um filho de junção é tabela  
+**Árvore de Profundidade à Esquerda:** O filho direito da junção sempre é uma tabela
 
 ---
 
 
-## Page 22
-
-IFMG
-&lt;page_number&gt;22&lt;/page_number&gt;
-
-# Planos de profundidade à esquerda
+# Planos de profundidade à esquerda (continuação)
 
 *   Os otimizadores usam *programação dinâmica* para pesquisar os planos de profundidade à esquerda
 *   A medida que o número de junções aumenta, o número de planos alternativos pode crescer muito
@@ -455,11 +372,6 @@ IFMG
 ---
 
 
-## Page 23
-
-IFMG
-&lt;page_number&gt;23&lt;/page_number&gt;
-
 # Avaliação de consultas no PostgreSQL
 
 *   Podemos visualizar informações sobre avaliação de consultas no PostgreSQL utilizando a palavra chave **EXPLAIN** antes da consulta
@@ -467,11 +379,6 @@ IFMG
 
 ---
 
-
-## Page 24
-
-IFMG
-&lt;page_number&gt;24&lt;/page_number&gt;
 
 # Exemplo 1 - Valor total comprado de cada fornecedor
 
@@ -493,23 +400,20 @@ GROUP BY f.id_fornecedor,
 
 ```mermaid
 graph TD
-    A[fornecedor] --> B[compra]
-    C[id_fornecedor, den_fornecedor, SUM(valor_total)] --> B
+    F[fornecedor] --> J["⋈ id_fornecedor"]
+    C[compra] --> J
+    J --> G["γ SUM valor_total"]
+    G --> R["id_fornecedor, den_fornecedor, SUM"]
+```
 
 ---
 
 
-## Page 25
+# Exemplo 1 - Valor total comprado de cada fornecedor (Avaliação)
 
-IFMG
-&lt;page_number&gt;25&lt;/page_number&gt;
+## Plano de Execução (QUERY PLAN)
 
-# Exemplo 1 - Valor total comprado de cada fornecedor
-
-## Avaliação
-
-QUERY PLAN
----
+```
 HashAggregate (cost=2.68..2.73 rows=4 width=72)
     Group Key: f.id_fornecedor
         -> Hash Join (cost=1.09..2.52 rows=33 width=56)
@@ -517,20 +421,16 @@ HashAggregate (cost=2.68..2.73 rows=4 width=72)
                 -> Seq Scan on compra c (cost=0.00..1.33 rows=33 width=24)
                 -> Hash (cost=1.04..1.04 rows=4 width=40)
                     -> Seq Scan on fornecedor f (cost=0.00..1.04 rows=4 width=40)
+```
 
 ---
 
 
-## Page 26
-
-&lt;page_number&gt;26&lt;/page_number&gt;
-
-&lt;img&gt;IFMG&lt;/img&gt;
-
 # Exemplo 2 - Valor total vendido para cada cidade
 
 ## Consulta
-```
+
+```sql
 EXPLAIN
 SELECT c.den_cidade,
        SUM(v.valor_total)
@@ -544,26 +444,25 @@ GROUP BY c.id_cidade,
 ```
 
 ## Plano
+
+```mermaid
+graph TD
+    V[venda] --> J1["⋈ id_cliente"]
+    CL[cliente] --> J1
+    CI[cidade] --> J2["⋈ id_cidade"]
+    J1 --> J2
+    J2 --> G["γ SUM valor_total"]
+    G --> R["id_cidade, den_cidade, SUM"]
 ```
-id_cidade, den_cidade γSUM(valor_total)
-                       |
-                       ⨯
-                 venda   cidade cliente
 
 ---
 
 
-## Page 27
+# Exemplo 2 - Valor total vendido para cada cidade (Avaliação)
 
-IFMG
-&lt;page_number&gt;27&lt;/page_number&gt;
+## Plano de Execução (QUERY PLAN)
 
-# Exemplo 2 - Valor total vendido para cada cidade
-
-## Avaliação
-
-QUERY PLAN
----
+```
 HashAggregate (cost=31.57..36.52 rows=396 width=49)
 Group Key: c.id_cidade
 -> Hash Join (cost=17.18..29.59 rows=396 width=23)
@@ -577,15 +476,10 @@ Group Key: c.id_cidade
                 Cache Mode: logical
                 -> Index Scan using cidade_pk on cidade c (cost=0.28..2.13 rows=1 width=17)
                     Index Cond: (id_cidade = cl.id_cidade)
+```
 
 ---
 
-
-## Page 28
-
-&lt;page_number&gt;28&lt;/page_number&gt;
-
-&lt;img&gt;IFMG&lt;/img&gt;
 
 # Referências
 
