@@ -898,8 +898,6 @@ VALUES (1000), (500);
 
 # Início e fim de transações
 
-# Início e fim de transações
-
 *   O início de uma transação é realizado com a instrução **BEGIN**
 *   A finalização é feita com os comandos:
     *   **COMMIT**: Solicita a gravação de todas as ações depois do último **BEGIN**
