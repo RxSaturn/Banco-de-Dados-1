@@ -1,28 +1,16 @@
-## Page 1
-
 # Banco de dados II
 
 ## 10 – Gerenciamento de Transações
 
-Marcos Roberto Ribeiro
+**Autor:** Marcos Roberto Ribeiro
 
-Departamento de Engenharia e Computação (DEC)
-Curso de Engenharia de Computação
-2023
-
-&lt;img&gt;Green square with white grid pattern&lt;/img&gt;
-INSTITUTO FEDERAL
-Minas Gerais
----
-Campus Bambuí
+**Instituição:** Instituto Federal Minas Gerais (IFMG) - Campus Bambuí  
+**Departamento:** Departamento de Engenharia e Computação (DEC)  
+**Curso:** Engenharia de Computação  
+**Ano:** 2023
 
 ---
 
-
-## Page 2
-
-IFMG
-&lt;page_number&gt;2&lt;/page_number&gt;
 
 # Introdução
 
@@ -38,10 +26,6 @@ IFMG
 ---
 
 
-## Page 3
-
-IFMG &lt;page_number&gt;3&lt;/page_number&gt;
-
 # As propriedades ACID
 
 Para um efetivo controle de transações, o SGBD deve garantir quatro propriedades importantes:
@@ -53,12 +37,6 @@ Para um efetivo controle de transações, o SGBD deve garantir quatro propriedad
 
 ---
 
-
-## Page 4
-
-&lt;page_number&gt;4&lt;/page_number&gt;
-
-IFMG
 
 # Consistência e Isolamento
 
@@ -75,11 +53,6 @@ IFMG
 ---
 
 
-## Page 5
-
-IFMG
-&lt;page_number&gt;5&lt;/page_number&gt;
-
 # Atomicidade e durabilidade
 
 *   As transações podem ser incompletas pelos seguintes motivos:
@@ -93,11 +66,6 @@ IFMG
 ---
 
 
-## Page 6
-
-IFMG
-&lt;page_number&gt;6&lt;/page_number&gt;
-
 # Transações e plano de execução
 
 *   O SGBD enxerga uma transação como uma lista de ações de escrita ou leitura sobre objetos
@@ -109,11 +77,6 @@ IFMG
 
 ---
 
-
-## Page 7
-
-IFMG
-&lt;page_number&gt;7&lt;/page_number&gt;
 
 # Plano de execução
 
@@ -162,11 +125,6 @@ IFMG
 ---
 
 
-## Page 8
-
-IFMG
-&lt;page_number&gt;8&lt;/page_number&gt;
-
 # Execução concorrente de transações
 
 *   Garantir a intercalação de transações é difícil, mas necessário por motivos de desempenho
@@ -176,11 +134,6 @@ IFMG
 
 ---
 
-
-## Page 9
-
-IFMG
-&lt;page_number&gt;9&lt;/page_number&gt;
 
 # Serialidade
 
@@ -226,11 +179,6 @@ IFMG
 ---
 
 
-## Page 10
-
-IFMG
-&lt;page_number&gt;10&lt;/page_number&gt;
-
 # Anomalias em razão da execução intercalada
 
 *   A execução de transações concorrentes pode deixar um banco de dados inconsistente se houver uma operação de gravação sobre um mesmo objeto executada por mais de uma transação
@@ -242,10 +190,6 @@ IFMG
 
 ---
 
-
-## Page 11
-
-IFMG &lt;page_number&gt;11&lt;/page_number&gt;
 
 # Lendo dados não efetivados (WR)
 
@@ -338,11 +282,6 @@ IFMG &lt;page_number&gt;11&lt;/page_number&gt;
 ---
 
 
-## Page 12
-
-IFMG
-&lt;page_number&gt;12&lt;/page_number&gt;
-
 # Leitura não repetível (RW)
 
 * Outra anomalia é quando uma transação T2 altera um objeto A que foi lido por uma transação T1 que está em andamento
@@ -399,10 +338,6 @@ Exemplo de leitura não repetível
 
 ---
 
-
-## Page 13
-
-IFMG &lt;page_number&gt;13&lt;/page_number&gt;
 
 # Sobrescrevendo dados não efetivados (WW)
 
@@ -473,11 +408,6 @@ IFMG &lt;page_number&gt;13&lt;/page_number&gt;
 ---
 
 
-## Page 14
-
-IFMG
-&lt;page_number&gt;14&lt;/page_number&gt;
-
 # Leituras fantasmas
 
 - Imagine que uma transação T1 obtenha o saldo médio de todas as contas de uma agência bancária (para isso é preciso ler todas as contas existentes na agência)
@@ -486,10 +416,6 @@ IFMG
 
 ---
 
-
-## Page 15
-
-IFMG &lt;page_number&gt;15&lt;/page_number&gt;
 
 # Planos de execução com transações canceladas
 
@@ -500,11 +426,6 @@ IFMG &lt;page_number&gt;15&lt;/page_number&gt;
 
 ---
 
-
-## Page 16
-
-IFMG
-&lt;page_number&gt;16&lt;/page_number&gt;
 
 # Exemplo com transação cancelada
 
@@ -586,10 +507,6 @@ IFMG
 ---
 
 
-## Page 17
-
-IFMG &lt;page_number&gt;17&lt;/page_number&gt;
-
 # Controle de concorrência baseado em bloqueio
 
 * Para evitar os problemas visto até o momento, os SGBDs utilizam protocolos de bloqueio
@@ -602,9 +519,7 @@ IFMG &lt;page_number&gt;17&lt;/page_number&gt;
 ---
 
 
-## Page 18
-
-IFMG Exemplo com Strict 2PL &lt;page_number&gt;18&lt;/page_number&gt;
+# Exemplo com Strict 2PL
 
 <table>
   <thead>
@@ -814,12 +729,6 @@ IFMG Exemplo com Strict 2PL &lt;page_number&gt;18&lt;/page_number&gt;
 ---
 
 
-## Page 19
-
-&lt;page_number&gt;19&lt;/page_number&gt;
-
-IFMG
-
 # Ações intercaladas
 
 ## Strict 2PL com intercalação
@@ -848,11 +757,6 @@ IFMG
 
 ---
 
-
-## Page 20
-
-IFMG
-&lt;page_number&gt;20&lt;/page_number&gt;
 
 # Impasses (deadlocks)
 
@@ -901,18 +805,15 @@ IFMG
 ---
 
 
-## Page 21
-
-IFMG
-&lt;page_number&gt;21&lt;/page_number&gt;
-
 # Transações em SQL
 
 *   Na linguagem SQL, o usuário pode ajustar modo de acesso e nível de isolamento das transações através da instrução **SET TRANSACTION**
 
-    SET TRANSACTION ISOLATION LEVEL
-    <nível de isolamento>
-    <modo de acesso>;
+```sql
+SET TRANSACTION ISOLATION LEVEL
+<nível de isolamento>
+<modo de acesso>;
+```
 
 *   O modo de acesso pode ser:
     *   **READ WRITE**: As transações podem fazer alterações
@@ -920,11 +821,6 @@ IFMG
 
 ---
 
-
-## Page 22
-
-IFMG
-&lt;page_number&gt;22&lt;/page_number&gt;
 
 # Nível de isolamento
 
@@ -974,12 +870,7 @@ IFMG
 ---
 
 
-## Page 23
-
-IFMG
-&lt;page_number&gt;23&lt;/page_number&gt;
-
-# Nível de isolamento
+# Nível de isolamento (continuação)
 
 *   O grau mais alto de isolamento é o **SERIALIZABLE** impedindo, inclusive, que uma transação altere conjunto de dados lidos por outras transações (leitura fantasma)
 *   O nível **REPEATABLE READ** garante que uma transação T só leia dados efetivados e nenhum dado lido ou gravado por T pode ser acessado até que T seja efetivada
@@ -987,11 +878,6 @@ IFMG
 
 ---
 
-
-## Page 24
-
-IFMG
-&lt;page_number&gt;24&lt;/page_number&gt;
 
 # Controle de transações no PostgreSQL
 
@@ -1005,14 +891,10 @@ CREATE TABLE conta(
 
 INSERT INTO conta(saldo)
 VALUES (1000), (500);
+```
 
 ---
 
-
-## Page 25
-
-IFMG
-&lt;page_number&gt;25&lt;/page_number&gt;
 
 # Início e fim de transações
 
@@ -1040,14 +922,10 @@ VALUES (700);
 SELECT * FROM conta;
 ROLLBACK;
 SELECT * FROM conta;
+```
 
 ---
 
-
-## Page 26
-
-IFMG
-&lt;page_number&gt;26&lt;/page_number&gt;
 
 # Pontos de salvamento
 
@@ -1060,13 +938,9 @@ IFMG
 ---
 
 
-## Page 27
+# Exemplo com SAVEPOINT
 
-IFMG
-&lt;page_number&gt;27&lt;/page_number&gt;
-
--- Exemplo com SAVEPOINT
-
+```sql
 BEGIN;
 
 INSERT INTO conta(saldo)
@@ -1086,14 +960,10 @@ SELECT * FROM conta;
 ROLLBACK;
 
 SELECT * FROM conta;
+```
 
 ---
 
-
-## Page 28
-
-IFMG
-&lt;page_number&gt;28&lt;/page_number&gt;
 
 # Simulando conflito no PostgreSQL
 
@@ -1105,11 +975,6 @@ IFMG
 
 ---
 
-
-## Page 29
-
-IFMG
-&lt;page_number&gt;29&lt;/page_number&gt;
 
 # Simulando leitura não repetível
 
@@ -1138,11 +1003,6 @@ IFMG
 ---
 
 
-## Page 30
-
-IFMG
-&lt;page_number&gt;30&lt;/page_number&gt;
-
 # Evitando a leitura não repetível
 
 *   O que aconteceu após a execução das duas transações?
@@ -1151,11 +1011,6 @@ IFMG
 
 ---
 
-
-## Page 31
-
-IFMG
-&lt;page_number&gt;31&lt;/page_number&gt;
 
 # Simulando leitura fantasma
 
@@ -1183,11 +1038,6 @@ SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
 ---
 
 
-## Page 32
-
-IFMG
-&lt;page_number&gt;32&lt;/page_number&gt;
-
 # Evitando a leitura fantasma
 
 *   O que aconteceu após a execução das duas transações?
@@ -1197,26 +1047,15 @@ IFMG
 ---
 
 
-## Page 33
-
-IFMG
-Exercícios
-&lt;page_number&gt;33&lt;/page_number&gt;
+# Exercícios
 
 Faça as seguintes simulações no PostgreSQL:
 
-1 Plano de execução do slide 16
-
-2 Plano de execução com um impasse
+1. Plano de execução do slide 16
+2. Plano de execução com um impasse
 
 ---
 
-
-## Page 34
-
-<header>IFMG</header>
-
-&lt;page_number&gt;34&lt;/page_number&gt;
 
 # Simulando deadlock
 
@@ -1247,11 +1086,6 @@ Faça as seguintes simulações no PostgreSQL:
 
 ---
 
-
-## Page 35
-
-IFMG
-&lt;page_number&gt;35&lt;/page_number&gt;
 
 # Referências
 

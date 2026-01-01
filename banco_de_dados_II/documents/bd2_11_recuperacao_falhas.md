@@ -1,65 +1,44 @@
-## Page 1
-
 # Banco de dados II
 
 ## 11 – Recuperação após Falhas
 
-Marcos Roberto Ribeiro
+**Autor:** Marcos Roberto Ribeiro
 
-Departamento de Engenharia e Computação (DEC)
-Curso de Engenharia de Computação
-2023
-
-&lt;img&gt;Green square with white grid pattern&lt;/img&gt;
-INSTITUTO FEDERAL
-Minas Gerais
----
-Campus Bambuí
+**Instituição:** Instituto Federal Minas Gerais (IFMG) - Campus Bambuí  
+**Departamento:** Departamento de Engenharia e Computação (DEC)  
+**Curso:** Engenharia de Computação  
+**Ano:** 2023
 
 ---
 
-
-## Page 2
-
-IFMG
-&lt;page_number&gt;2&lt;/page_number&gt;
 
 # Introdução – Gerenciador de Recuperação
 
 *   Deve garantir atomicidade e durabilidade
-    Atomicidade: desfazer as ações de transações não efetivadas
-    Durabilidade: garantir que todas as ações efetivadas sobrevivam a falhas de sistema
+    *   **Atomicidade:** desfazer as ações de transações não efetivadas
+    *   **Durabilidade:** garantir que todas as ações efetivadas sobrevivam a falhas de sistema
 *   Um dos componentes mais complexos do SGBD pelo fato de ser acionado durante as falhas
 
 ---
 
 
-## Page 3
+# ARIES
 
-&lt;page_number&gt;3&lt;/page_number&gt;
-
-IFMG
-ARIES
-
-* Algorithms for Recovery and Isolation Exploiting Semantics (ARIES)
+**Algorithms for Recovery and Isolation Exploiting Semantics (ARIES)**
 
 * Quando o gerenciador de recuperação é acionado, o reinício acontece em três fases:
-    * Análise: identifica páginas sujas e transações ativas durante a falha
-    * Refazer: repete as ações do log para restaurar o estado do banco de dados no momento da falha
-    * Desfazer: desfaz ações de transações não efetivadas para que o banco possua apenas alterações de transações efetivadas
+    * **Análise:** identifica páginas sujas e transações ativas durante a falha
+    * **Refazer:** repete as ações do log para restaurar o estado do banco de dados no momento da falha
+    * **Desfazer:** desfaz ações de transações não efetivadas para que o banco possua apenas alterações de transações efetivadas
 
 ---
 
 
-## Page 4
-
-&lt;page_number&gt;4&lt;/page_number&gt;
-
-IFMG
-
 # Exemplo de log
 
 ## NSL* Log
+
+> *NSL: Número de Sequência de Log*
 
 <table>
   <tr>
@@ -103,26 +82,16 @@ IFMG
 ---
 
 
-## Page 5
-
-IFMG
-&lt;page_number&gt;5&lt;/page_number&gt;
-
 # Princípios fundamentais do ARIES
 
-Gravação antecipada do log, *Write-Ahead Logging (WAL)*: Qualquer alteração no banco de dados deve ser gravada primeiro no log
+**Gravação antecipada do log (Write-Ahead Logging - WAL):** Qualquer alteração no banco de dados deve ser gravada primeiro no log
 
-Repetição do histórico durante a fase Refazer: O ARIES refaz todas as ações antes da falha e, em seguida, desfaz as ações das transações não efetivadas
+**Repetição do histórico durante a fase Refazer:** O ARIES refaz todas as ações antes da falha e, em seguida, desfaz as ações das transações não efetivadas
 
-Registro de alterações da fase Desfazer: As alterações desfeitas no banco de dados são registradas para que esse processo não se repita em caso de reinício
+**Registro de alterações da fase Desfazer:** As alterações desfeitas no banco de dados são registradas para que esse processo não se repita em caso de reinício
 
 ---
 
-
-## Page 6
-
-IFMG
-&lt;page_number&gt;6&lt;/page_number&gt;
 
 # O log
 
@@ -133,11 +102,6 @@ IFMG
 
 ---
 
-
-## Page 7
-
-IFMG
-&lt;page_number&gt;7&lt;/page_number&gt;
 
 # Registros de log
 
@@ -152,11 +116,6 @@ IFMG
 ---
 
 
-## Page 8
-
-IFMG
-&lt;page_number&gt;8&lt;/page_number&gt;
-
 # Registros de log de atualização
 
 * Além dos campos NSLant, idTrans e tipo, os registros de log de atualização possuem os seguintes campos:
@@ -169,11 +128,6 @@ IFMG
 ---
 
 
-## Page 9
-
-IFMG
-&lt;page_number&gt;9&lt;/page_number&gt;
-
 # Registros de log de compensação
 
 * Antes de desfazer a alteração de um registro U, é gravado um **registro de log de compensação (RLC) C**
@@ -185,11 +139,6 @@ IFMG
 
 ---
 
-
-## Page 10
-
-IFMG
-&lt;page_number&gt;10&lt;/page_number&gt;
 
 # Outras estruturas relacionadas à recuperação
 
@@ -207,13 +156,7 @@ IFMG
 ---
 
 
-## Page 11
-
-&lt;page_number&gt;11&lt;/page_number&gt;
-
-&lt;img&gt;IFMG&lt;/img&gt;
-
-# Exemplo
+# Exemplo de Tabelas de Recuperação
 
 ## idPáginaNSLreg
 
@@ -299,11 +242,6 @@ TABELA DE TRANSACOES
 ---
 
 
-## Page 12
-
-IFMG
-&lt;page_number&gt;12&lt;/page_number&gt;
-
 # O protocolo Write-Ahead Log (WAL)
 
 * Antes de uma página ser gravada em disco, todo o log de atualização desta página precisa estar em armazenamento estável
@@ -312,11 +250,6 @@ IFMG
 
 ---
 
-
-## Page 13
-
-IFMG
-&lt;page_number&gt;13&lt;/page_number&gt;
 
 # Pontos de verificação
 
@@ -331,40 +264,28 @@ IFMG
 ---
 
 
-## Page 14
-
-&lt;page_number&gt;14&lt;/page_number&gt;
-
-IFMG
-
 # Recuperando de uma falha de sistema
 
-<mermaid>
+```mermaid
 graph TD
-    subgraph LOG
-        A[Registro mais antigo das transações ativas no momento da falha]
-        B[Menor NSLreg na tabela de páginas sujas no final da fase de análise]
-        C[Ponto de verificação mais recente]
-        X[FALHA (fim do log)]
+    subgraph "LOG"
+        C["Ponto de verificação mais recente"]
+        B["Menor NSLreg na tabela de páginas sujas"]
+        A["Registro mais antigo das transações ativas"]
+        X["FALHA - fim do log"]
     end
 
-    A -- "A" --> B
-    B -- "B" --> C
-    C -- "C" --> X
+    C --> B
+    B --> A
+    A --> X
 
-    D[DESFAZER] --> A
-    E[REFAZER] --> B
-    F[ANÁLISE] --> C
-</mermaid>
+    F["ANÁLISE"] -.-> C
+    E["REFAZER"] -.-> B
+    D["DESFAZER"] -.-> A
+```
 
 ---
 
-
-## Page 15
-
-&lt;page_number&gt;15&lt;/page_number&gt;
-
-IFMG
 
 # Fase de análise: tarefas principais
 
@@ -374,10 +295,6 @@ IFMG
 
 ---
 
-
-## Page 16
-
-IFMG &lt;page_number&gt;16&lt;/page_number&gt;
 
 # Fase de análise
 
@@ -390,10 +307,6 @@ IFMG &lt;page_number&gt;16&lt;/page_number&gt;
 
 ---
 
-
-## Page 17
-
-IFMG &lt;page_number&gt;17&lt;/page_number&gt;
 
 # Fase Refazer
 
@@ -408,11 +321,6 @@ IFMG &lt;page_number&gt;17&lt;/page_number&gt;
 ---
 
 
-## Page 18
-
-IFMG
-&lt;page_number&gt;18&lt;/page_number&gt;
-
 # Fase Desfazer
 
 - A fase Desfazer retrocede a partir do último registro de log
@@ -421,10 +329,6 @@ IFMG
 
 ---
 
-
-## Page 19
-
-IFMG &lt;page_number&gt;19&lt;/page_number&gt;
 
 # O algoritmo da fase Desfazer
 
@@ -439,12 +343,6 @@ IFMG &lt;page_number&gt;19&lt;/page_number&gt;
 
 ---
 
-
-## Page 20
-
-&lt;page_number&gt;20&lt;/page_number&gt;
-
-IFMG
 
 # Falhas durante o reinício
 
@@ -475,30 +373,9 @@ IFMG
 ---
 
 
-## Page 21
+# Falhas durante o reinício (continuação - Parte 2)
 
-&lt;page_number&gt;20&lt;/page_number&gt;
-
-IFMG
-
-# Falhas durante o reinício
-
-## Exemplo de log
-
-*   00, 05 Ponto de verificação
-*   10 atualização: T1 grava P5
-*   20 atualização: T2 grava P3
-*   30 T1 é cancelada
-*   40, 45 RLC: desfazer T1 NSL 10, T1 termina
-*   50 atualização: T3 grava P1
-*   60 atualização: T2 grava P5
-*   X FALHA, REINÍCIO
-*   70 RLC: desfazer T2 NSL 60
-*   80, 85 RLC: desfazer T3 NSL 50, T3 termina
-*   X FALHA, REINÍCIO
-*   90, 95 RLC: desfazer T2 NSL 20, T2 termina
-
-## Funcionamento do algoritmo
+## Funcionamento do algoritmo (Fase Desfazer)
 
 *   O conjunto ADesfazer consiste dos NSL 50 e 60
 *   A fase desfazer inicia com o processamento do registro 60
@@ -512,30 +389,9 @@ IFMG
 ---
 
 
-## Page 22
+# Falhas durante o reinício (continuação - Parte 3)
 
-&lt;page_number&gt;20&lt;/page_number&gt;
-
-IFMG
-
-# Falhas durante o reinício
-
-## Exemplo de log
-
-*   00, 05 Ponto de verificação
-*   10 atualização: T1 grava P5
-*   20 atualização: T2 grava P3
-*   30 T1 é cancelada
-*   40, 45 RLC: desfazer T1 NSL 10, T1 termina
-*   50 atualização: T3 grava P1
-*   60 atualização: T2 grava P5
-*   X FALHA, REINÍCIO
-*   70 RLC: desfazer T2 NSL 60
-*   80, 85 RLC: desfazer T3 NSL 50, T3 termina
-*   X FALHA, REINÍCIO
-*   90, 95 RLC: desfazer T2 NSL 20, T2 termina
-
-## Funcionamento do algoritmo
+## Funcionamento do algoritmo (Após segunda falha)
 
 *   Após a segunda falha, a fase Análise determina que T2 era a única transação ativa e as páginas sujas são P1, P3 e P5
 *   Durante a fase Refazer, os registros de 10 a 85 são processados novamente
@@ -546,12 +402,6 @@ IFMG
 
 ---
 
-
-## Page 23
-
-&lt;page_number&gt;21&lt;/page_number&gt;
-
-&lt;img&gt;IFMG&lt;/img&gt;
 
 # Referências
 
