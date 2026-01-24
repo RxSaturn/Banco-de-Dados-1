@@ -3,17 +3,12 @@ Script para gerar diagramas de alta qualidade para apresentacao sobre Sharding.
 Gera os diagramas como PNG de alta resolucao.
 
 Uso: python generate_diagrams.py
-Requer: matplotlib, numpy, pillow
+Requer: matplotlib, numpy
 """
 
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-from matplotlib.patches import FancyBboxPatch, Circle, Arrow, FancyArrowPatch
-from matplotlib.patches import ConnectionPatch
-import matplotlib.lines as mlines
+from matplotlib.patches import FancyBboxPatch, Circle
 import numpy as np
-from collections import defaultdict
-import hashlib
 import os
 
 # Configuracao de estilo global
