@@ -1,5 +1,7 @@
 # Generated visualizations (run the script to regenerate)
+# Exception: keep apresentacao_assets/*.png
 *.png
+!apresentacao_assets/*.png
 
 # Python cache
 __pycache__/
