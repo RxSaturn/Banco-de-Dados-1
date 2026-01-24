@@ -194,7 +194,7 @@ def visualize_hash_ring(ring, key_positions, title="Consistent Hashing Ring"):
     
     # Plota algumas chaves como exemplo (primeiras 50)
     for pos, node in key_positions[:50]:
-        angle = np.radians(ring._hash_to_degrees(pos) if hasattr(ring, '_hash_to_degrees') else pos % 360)
+        angle = np.radians(ring._hash_to_degrees(pos))
         x, y = 0.85 * np.cos(angle), 0.85 * np.sin(angle)
         ax1.plot(x, y, '.', color=colors.get(node, 'gray'), 
                 markersize=3, alpha=0.5)

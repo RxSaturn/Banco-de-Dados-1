@@ -259,9 +259,13 @@ class ConsistentHashRing:
                 self.add_node(node)
     
     def _hash(self, key):
-        """Gera hash MD5 normalizado para o espaço [0, 360)."""
+        """Gera hash MD5 normalizado para o espaço [0, 2^32)."""
         md5 = hashlib.md5(str(key).encode()).hexdigest()
-        return int(md5, 16) % 360
+        return int(md5, 16) % (2**32)
+    
+    def _hash_to_degrees(self, hash_val):
+        """Converte hash para graus (0-360) para visualização."""
+        return (hash_val / (2**32)) * 360
     
     def add_node(self, node):
         """Adiciona um nó com seus virtual nodes ao ring."""
