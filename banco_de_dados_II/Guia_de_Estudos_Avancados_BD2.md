@@ -187,12 +187,12 @@ Combina tuplas de duas relações baseando-se em condições de comparação ent
 
 ```sql
 -- SQL
-SELECT nome_cliente, nome_vendedor
+SELECT nome_cliente, nome_vend
 FROM cliente, vendedor
-WHERE cliente.id_vendedor = vendedor.id_vendedor;
+WHERE cliente.id_vend = vendedor.id_vend;
 
 -- Álgebra Relacional
-π_{nome_cliente,nome_vendedor}(cliente ⋈_{id_vendedor=id_vendedor} vendedor)
+π_{nome_cliente,nome_vend}(cliente ⋈_{id_vend=id_vend} vendedor)
 ```
 
 ---
@@ -222,7 +222,7 @@ Agrupa tuplas e sumariza dados de atributos.
 SELECT mes, SUM(valor) FROM venda GROUP BY mes;
 
 -- Álgebra Relacional
-_{mes} γ _{SUM(valor)} (venda)
+mes γ SUM(valor) (venda)
 ```
 
 ---
