@@ -1,0 +1,47 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    name: Scripts Python
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Instala o ruff
+        run: pip install ruff
+
+      # Apenas ruff check, que aponta erros reais. O ruff format nao entra
+      # aqui de proposito: ele reescreveria os scripts para um estilo que
+      # ninguem escolheu. Para ativar, rode `ruff format .` uma vez e
+      # acrescente o passo `ruff format --check .`.
+      - name: Verifica estilo e erros
+        run: ruff check .
+
+  links:
+    name: Links dos documentos
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      # Verifica apenas links relativos, que sao os que a reorganizacao de
+      # pastas pode quebrar. Links externos ficam de fora de proposito: um
+      # site fora do ar deixaria o badge vermelho sem culpa do repositorio.
+      - name: Verifica links relativos
+        run: python3 .github/scripts/check_links.py
