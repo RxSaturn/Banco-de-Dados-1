@@ -2,7 +2,7 @@
 
 > **Disciplina:** Banco de Dados II  
 > **Integrantes:** Henrique Augusto, Henrique Evangelista, Rayssa Mendes  
-> **Diagramas:** Ver pasta `apresentacao_assets/`
+> **Diagramas:** Ver pasta `img/`
 
 ---
 
@@ -57,7 +57,7 @@
 
 ### Elemento Visual
 
-**Imagem:** `apresentacao_assets/01_escala_vertical_vs_horizontal.png`
+![Comparacao entre escala vertical e escala horizontal](img/01_escala_vertical_vs_horizontal.png)
 
 **Código Mermaid alternativo:**
 
@@ -108,7 +108,7 @@ flowchart LR
 
 ### Elemento Visual
 
-**Imagem:** `apresentacao_assets/02_sharding_vs_particionamento_vs_replicacao.png`
+![Diferencas entre sharding, particionamento e replicacao](img/02_sharding_vs_particionamento_vs_replicacao.png)
 
 **Tabela Comparativa (para projeção):**
 
@@ -178,7 +178,7 @@ flowchart TB
 
 ### Elemento Visual
 
-**Imagem:** `apresentacao_assets/03_arquitetura_monolitica_vs_sharded.png`
+![Arquitetura monolitica comparada com arquitetura fragmentada](img/03_arquitetura_monolitica_vs_sharded.png)
 
 **Código Mermaid:**
 
@@ -243,7 +243,7 @@ flowchart TB
 
 ### Elemento Visual
 
-**Imagem:** `apresentacao_assets/04_estrategias_particionamento.png`
+![Estrategias de particionamento por hash, por faixa e por diretorio](img/04_estrategias_particionamento.png)
 
 **Código Mermaid:**
 
@@ -311,7 +311,7 @@ flowchart TB
 
 ### Elemento Visual
 
-**Imagem:** `apresentacao_assets/05_consistent_hashing.png`
+![Anel de hash consistente com virtual nodes](img/05_consistent_hashing.png)
 
 **Código Mermaid:**
 
@@ -378,8 +378,8 @@ Onde: K = total de chaves, N = número de nós
 
 ### Elemento Visual
 
-**Imagem 1:** `apresentacao_assets/06_teorema_cap.png`
-**Imagem 2:** `apresentacao_assets/07_query_routing.png`
+![Triangulo do teorema CAP](img/06_teorema_cap.png)
+![Fluxo de roteamento de consultas entre shards](img/07_query_routing.png)
 
 **Código Mermaid - CAP:**
 
@@ -453,7 +453,7 @@ sequenceDiagram
 
 ### Elemento Visual
 
-**Imagem:** `apresentacao_assets/08_instagram_id_structure.png`
+![Estrutura do identificador usado pelo Instagram](img/08_instagram_id_structure.png)
 
 **Estrutura do ID Instagram:**
 
@@ -514,7 +514,7 @@ $$ LANGUAGE plpgsql;
 
 ### Elemento Visual
 
-**Imagem:** `apresentacao_assets/09_conclusao_resumo.png`
+![Resumo visual dos conceitos da apresentacao](img/09_conclusao_resumo.png)
 
 **Diagrama de Trade-offs:**
 
@@ -549,7 +549,7 @@ graph LR
 
 ### Diagramas PNG (Alta Resolução)
 
-Os seguintes arquivos foram gerados na pasta `apresentacao_assets/`:
+Os seguintes arquivos ficam na pasta `img/`:
 
 | Arquivo | Slide | Descrição |
 |---------|-------|-----------|
@@ -568,8 +568,8 @@ Os seguintes arquivos foram gerados na pasta `apresentacao_assets/`:
 Para regenerar os diagramas, execute:
 
 ```bash
-cd apresentacao_assets/
-python generate_diagrams.py
+cd banco_de_dados_II/apresentacao-sharding/scripts/
+python3 generate_diagrams.py
 ```
 
 **Requisitos:**
