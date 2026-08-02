@@ -1530,4 +1530,4 @@ graph TD
 
 Este guia de exercícios foi elaborado com base nos materiais didáticos do curso de Banco de Dados II do IFMG - Campus Bambuí, sob orientação do Prof. Marcos Roberto Ribeiro.
 
-Para aprofundamento teórico, consulte o [Guia de Estudos Avançados em Banco de Dados II](./Guia_de_Estudos_Avancados_BD2.md).
+Para aprofundamento teórico, consulte o [Guia de Estudos Avançados em Banco de Dados II](./guia-de-estudos-avancados.md).

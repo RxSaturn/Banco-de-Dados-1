@@ -13,9 +13,10 @@ Requer: matplotlib, numpy (pip install matplotlib numpy)
 """
 
 import hashlib
+from collections import defaultdict
+
 import matplotlib.pyplot as plt
 import numpy as np
-from collections import defaultdict
 
 
 class ConsistentHashRing:
@@ -244,7 +245,7 @@ def visualize_hash_ring(ring, key_positions, title="Consistent Hashing Ring"):
     
     stats_text = f'Desvio Padrão: {std_dev:.1f}\nCoef. Variação: {cv:.1f}%'
     ax2.text(0.02, 0.98, stats_text, transform=ax2.transAxes, fontsize=9,
-             verticalalignment='top', bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
+             verticalalignment='top', bbox={"boxstyle": 'round', "facecolor": 'wheat', "alpha": 0.5})
     
     plt.suptitle(title, fontsize=14, fontweight='bold', y=1.02)
     plt.tight_layout()
@@ -269,7 +270,7 @@ def compare_vnode_impact():
     colors = ['#e74c3c', '#3498db', '#2ecc71', '#9b59b6']
     
     for ax, vnodes in zip(axes.flatten(), vnode_configs):
-        ring, distribution, _ = simulate_key_distribution(
+        _ring, distribution, _ = simulate_key_distribution(
             num_keys=1000, 
             nodes=nodes, 
             virtual_nodes=vnodes
@@ -316,7 +317,7 @@ def simulate_node_failure():
     nodes = ['Shard-A', 'Shard-B', 'Shard-C', 'Shard-D']
     
     # Distribuição inicial
-    ring_before, dist_before, positions_before = simulate_key_distribution(
+    ring_before, dist_before, _positions_before = simulate_key_distribution(
         num_keys=1000, nodes=nodes, virtual_nodes=100
     )
     
@@ -373,7 +374,7 @@ if __name__ == "__main__":
     
     # Estatísticas
     counts = list(distribution.values())
-    print(f"\n📈 Estatísticas:")
+    print("\n📈 Estatísticas:")
     print(f"  - Média: {np.mean(counts):.1f} chaves/shard")
     print(f"  - Desvio Padrão: {np.std(counts):.1f}")
     print(f"  - Coeficiente de Variação: {(np.std(counts)/np.mean(counts))*100:.1f}%")
@@ -415,7 +416,7 @@ if __name__ == "__main__":
     # Tenta mostrar os gráficos (se ambiente gráfico disponível)
     try:
         plt.show()
-    except Exception:
+    except (RuntimeError, OSError):
         print("\n⚠️  Ambiente gráfico não disponível. Gráficos salvos como PNG.")
     
     print("\n" + "=" * 70)

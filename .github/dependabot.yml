@@ -1,0 +1,9 @@
+version: 2
+updates:
+  # Mantem as actions do workflow de lint em dia. E a unica dependencia
+  # externa do repositorio. Os scripts Python usam matplotlib e numpy, mas
+  # sem arquivo de requisitos versionado nao ha o que o Dependabot atualize.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"

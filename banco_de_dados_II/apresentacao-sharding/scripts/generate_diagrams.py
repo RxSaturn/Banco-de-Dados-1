@@ -6,10 +6,11 @@ Uso: python generate_diagrams.py
 Requer: matplotlib, numpy
 """
 
-import matplotlib.pyplot as plt
-from matplotlib.patches import FancyBboxPatch, Circle
-import numpy as np
 import os
+
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib.patches import Circle, FancyBboxPatch
 
 # Configuracao de estilo global
 plt.rcParams['font.family'] = 'sans-serif'
@@ -31,10 +32,17 @@ COLORS = {
 }
 
 
+# Este script vive em apresentacao-sharding/scripts/ e grava em
+# apresentacao-sharding/img/. O caminho parte de __file__ e nao do diretorio
+# de trabalho, entao a chamada funciona a partir de qualquer pasta.
+IMG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir, 'img')
+
+
 def save_figure(fig, filename, dpi=150):
-    """Salva a figura em alta resolucao."""
-    filepath = os.path.join(os.path.dirname(__file__), filename)
-    fig.savefig(filepath, dpi=dpi, bbox_inches='tight', 
+    """Salva a figura em alta resolucao dentro de img/."""
+    os.makedirs(IMG_DIR, exist_ok=True)
+    filepath = os.path.normpath(os.path.join(IMG_DIR, filename))
+    fig.savefig(filepath, dpi=dpi, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
     print(f"OK: Salvo: {filepath}")
     plt.close(fig)
@@ -62,7 +70,7 @@ def create_scaling_comparison():
     
     # Seta de upgrade
     ax1.annotate('', xy=(5.5, 3.5), xytext=(4, 3.5),
-                arrowprops=dict(arrowstyle='->', lw=3, color=COLORS['warning']))
+                arrowprops={'arrowstyle': '->', 'lw': 3, 'color': COLORS['warning']})
     ax1.text(4.75, 4.5, 'UPGRADE', ha='center', fontsize=10, color=COLORS['warning'], fontweight='bold')
     ax1.text(4.75, 4.0, '(Alto Custo)', ha='center', fontsize=9, color=COLORS['warning'])
     
@@ -94,7 +102,7 @@ def create_scaling_comparison():
     
     # Adicionar novo servidor
     ax2.annotate('', xy=(9, 3.5), xytext=(8.5, 3.5),
-                arrowprops=dict(arrowstyle='->', lw=3, color=COLORS['secondary']))
+                arrowprops={'arrowstyle': '->', 'lw': 3, 'color': COLORS['secondary']})
     ax2.text(9.3, 3.5, '+', ha='center', fontsize=24, va='center', fontweight='bold', color=COLORS['secondary'])
     ax2.text(9.3, 2.3, '+ Shard', ha='center', fontsize=9)
     
@@ -207,7 +215,7 @@ def create_architecture_comparison():
     
     # Seta
     ax1.annotate('', xy=(5, 7.3), xytext=(5, 8.8),
-                arrowprops=dict(arrowstyle='->', lw=2, color=COLORS['dark']))
+                arrowprops={'arrowstyle': '->', 'lw': 2, 'color': COLORS['dark']})
     
     # Banco unico
     db1 = FancyBboxPatch((2, 3), 6, 4, boxstyle="round,pad=0.1",
@@ -240,7 +248,7 @@ def create_architecture_comparison():
     
     # Seta app -> router
     ax2.annotate('', xy=(6, 9.1), xytext=(6, 9.9),
-                arrowprops=dict(arrowstyle='->', lw=2, color=COLORS['dark']))
+                arrowprops={'arrowstyle': '->', 'lw': 2, 'color': COLORS['dark']})
     
     # Config Server
     config = FancyBboxPatch((9.5, 7.5), 2, 1.5, boxstyle="round,pad=0.1",
@@ -250,7 +258,7 @@ def create_architecture_comparison():
     
     # Seta router -> config (pontilhada)
     ax2.annotate('', xy=(9.4, 8.25), xytext=(8.1, 8.25),
-                arrowprops=dict(arrowstyle='->', lw=1.5, color=COLORS['accent'], linestyle='dashed'))
+                arrowprops={'arrowstyle': '->', 'lw': 1.5, 'color': COLORS['accent'], 'linestyle': 'dashed'})
     
     # Shards
     shards_info = [
@@ -269,7 +277,7 @@ def create_architecture_comparison():
     # Setas router -> shards
     for x in [2, 5.5, 9]:
         ax2.annotate('', xy=(x, 6.2), xytext=(6, 7.4),
-                    arrowprops=dict(arrowstyle='->', lw=1.5, color=COLORS['secondary']))
+                    arrowprops={'arrowstyle': '->', 'lw': 1.5, 'color': COLORS['secondary']})
     
     # Beneficios
     ax2.text(6, 0.8, '[OK] Carga distribuida  [OK] Escala linear', ha='center', fontsize=10, color=COLORS['secondary'])
@@ -317,21 +325,21 @@ def create_partitioning_strategies():
         # Titulo
         ax.text(5, 11.2, strat['title'], ha='center', fontsize=16, fontweight='bold', color=strat['color'])
         ax.text(5, 10.4, strat['formula'], ha='center', fontsize=10, family='monospace', 
-                bbox=dict(boxstyle='round', facecolor=COLORS['light']))
+                bbox={'boxstyle': 'round', 'facecolor': COLORS['light']})
         
         # Visualizacao
         if strat['title'] == 'HASH-BASED':
             # Entrada
             ax.text(2, 8.5, 'user_123', ha='center', fontsize=10, family='monospace')
             ax.annotate('', xy=(4, 8.5), xytext=(3.2, 8.5),
-                       arrowprops=dict(arrowstyle='->', lw=2))
+                       arrowprops={'arrowstyle': '->', 'lw': 2})
             # Hash
             hash_box = FancyBboxPatch((4, 8), 2, 1, boxstyle="round,pad=0.05",
                                       facecolor=COLORS['bg_mono'], edgecolor=strat['color'], linewidth=2)
             ax.add_patch(hash_box)
             ax.text(5, 8.5, '#hash', ha='center', fontsize=9)
             ax.annotate('', xy=(7, 8.5), xytext=(6.2, 8.5),
-                       arrowprops=dict(arrowstyle='->', lw=2))
+                       arrowprops={'arrowstyle': '->', 'lw': 2})
             ax.text(8, 8.5, 'Shard 2', ha='center', fontsize=10, color=strat['color'], fontweight='bold')
             
         elif strat['title'] == 'RANGE-BASED':
@@ -535,7 +543,7 @@ def create_query_routing():
     
     # Seta 1->2
     ax.annotate('', xy=(4.3, 7.5), xytext=(3.2, 7.5),
-               arrowprops=dict(arrowstyle='->', lw=2, color=COLORS['dark']))
+               arrowprops={'arrowstyle': '->', 'lw': 2, 'color': COLORS['dark']})
     
     # 2. Query Router
     router = FancyBboxPatch((4.5, 6.5), 2.5, 2, boxstyle="round,pad=0.1",
@@ -555,9 +563,9 @@ def create_query_routing():
     
     # Setas Router <-> Config
     ax.annotate('', xy=(8.3, 7.8), xytext=(7.2, 7.8),
-               arrowprops=dict(arrowstyle='->', lw=2, color=COLORS['accent']))
+               arrowprops={'arrowstyle': '->', 'lw': 2, 'color': COLORS['accent']})
     ax.annotate('', xy=(7.2, 7.2), xytext=(8.3, 7.2),
-               arrowprops=dict(arrowstyle='->', lw=2, color=COLORS['accent'], linestyle='dashed'))
+               arrowprops={'arrowstyle': '->', 'lw': 2, 'color': COLORS['accent'], 'linestyle': 'dashed'})
     
     # 4. Shards
     shards_y = 2
@@ -574,13 +582,13 @@ def create_query_routing():
     
     # Seta Router -> Shard correto
     ax.annotate('', xy=(8.25, 4.7), xytext=(5.75, 6.3),
-               arrowprops=dict(arrowstyle='->', lw=2, color=COLORS['secondary']))
+               arrowprops={'arrowstyle': '->', 'lw': 2, 'color': COLORS['secondary']})
     ax.text(7.5, 5.8, '(4) Query', ha='center', fontsize=9, color=COLORS['secondary'])
     
     # Retorno
     ax.annotate('', xy=(1.75, 6.3), xytext=(8.25, 4.7),
-               arrowprops=dict(arrowstyle='->', lw=2, color=COLORS['secondary'], 
-                              linestyle='dashed', connectionstyle='arc3,rad=-0.3'))
+               arrowprops={'arrowstyle': '->', 'lw': 2, 'color': COLORS['secondary'], 
+                              'linestyle': 'dashed', 'connectionstyle': 'arc3,rad=-0.3'})
     ax.text(5, 4, '(5) Response', ha='center', fontsize=9, color=COLORS['secondary'])
     
     # Legenda de tempo
