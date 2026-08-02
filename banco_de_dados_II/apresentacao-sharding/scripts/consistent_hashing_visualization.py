@@ -373,7 +373,7 @@ if __name__ == "__main__":
     
     # Estatísticas
     counts = list(distribution.values())
-    print(f"\n📈 Estatísticas:")
+    print("\n📈 Estatísticas:")
     print(f"  - Média: {np.mean(counts):.1f} chaves/shard")
     print(f"  - Desvio Padrão: {np.std(counts):.1f}")
     print(f"  - Coeficiente de Variação: {(np.std(counts)/np.mean(counts))*100:.1f}%")

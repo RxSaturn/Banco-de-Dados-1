@@ -31,10 +31,17 @@ COLORS = {
 }
 
 
+# Este script vive em apresentacao-sharding/scripts/ e grava em
+# apresentacao-sharding/img/. O caminho parte de __file__ e nao do diretorio
+# de trabalho, entao a chamada funciona a partir de qualquer pasta.
+IMG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir, 'img')
+
+
 def save_figure(fig, filename, dpi=150):
-    """Salva a figura em alta resolucao."""
-    filepath = os.path.join(os.path.dirname(__file__), filename)
-    fig.savefig(filepath, dpi=dpi, bbox_inches='tight', 
+    """Salva a figura em alta resolucao dentro de img/."""
+    os.makedirs(IMG_DIR, exist_ok=True)
+    filepath = os.path.normpath(os.path.join(IMG_DIR, filename))
+    fig.savefig(filepath, dpi=dpi, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
     print(f"OK: Salvo: {filepath}")
     plt.close(fig)
