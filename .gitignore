@@ -4,10 +4,11 @@
 consistent_hashing_visualization.png
 vnode_comparison.png
 
-# Cache do Python
+# Cache do Python e das ferramentas
 __pycache__/
 *.py[cod]
 *$py.class
+.ruff_cache/
 
 # Ambiente virtual
 venv/
